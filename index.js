@@ -16,10 +16,9 @@ app.get("/", async function (req, res) {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-var token = config.token;
 
+const token = fs.readFileSync('token.txt', 'utf-8');
 const bot = new TelegramBot(token, { polling: true });
-
 const commands = loadCommands('./commands');
 
 
